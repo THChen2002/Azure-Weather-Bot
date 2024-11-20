@@ -1,0 +1,452 @@
+{
+    "type": "bubble",
+    "size": "giga",
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "spacing": "md",
+      "contents": [
+        {
+          "type": "box",
+          "layout": "baseline",
+          "contents": [
+            {
+              "type": "icon",
+              "url": "https://cdn-icons-png.flaticon.com/512/3179/3179068.png"
+            },
+            {
+              "type": "text",
+              "text": "{{city}} {{town}}",
+              "weight": "bold",
+              "offsetStart": "sm"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": "今日白天",
+          "weight": "bold",
+          "margin": "md"
+        },
+        {
+          "type": "text",
+          "text": "{{minT}}° ~ {{maxT}}°",
+          "size": "3xl",
+          "weight": "bold",
+          "margin": "none"
+        },
+        {
+          "type": "box",
+          "layout": "baseline",
+          "contents": [
+            {
+              "type": "icon",
+              "url": "https://cdn-icons-png.flaticon.com/512/46/46073.png"
+            },
+            {
+              "type": "text",
+              "text": "{{PoP}}%",
+              "size": "sm",
+              "offsetStart": "sm",
+              "flex": 1
+            },
+            {
+              "type": "text",
+              "text": "{{Wdesc}}",
+              "size": "xs",
+              "weight": "bold",
+              "margin": "none",
+              "flex": 9,
+              "offsetStart": "md"
+            }
+          ],
+          "margin": "none"
+        },
+        {
+          "type": "image",
+          "url": "https://upload.cc/i1/2022/07/12/sAkF8V.jpg",
+          "align": "end",
+          "position": "absolute",
+          "offsetStart": "190px",
+          "offsetTop": "5px"
+        },
+        {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://upload.cc/i1/2022/08/01/SL7CXr.png",
+                  "size": "xxs",
+                  "flex": 1
+                },
+                {
+                  "type": "text",
+                  "text": "短袖",
+                  "size": "xxs",
+                  "align": "center",
+                  "margin": "sm",
+                  "weight": "bold"
+                }
+              ],
+              "flex": 2
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [],
+              "width": "3px",
+              "backgroundColor": "#B7B7B7"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://upload.cc/i1/2022/08/01/x2M5Wo.png",
+                  "size": "xxs",
+                  "flex": 1
+                },
+                {
+                  "type": "text",
+                  "text": "攜帶雨具",
+                  "size": "xxs",
+                  "align": "center",
+                  "margin": "sm",
+                  "weight": "bold"
+                }
+              ],
+              "flex": 1
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://upload.cc/i1/2022/08/01/GzcSu5.png",
+                  "size": "xxs",
+                  "flex": 1
+                },
+                {
+                  "type": "text",
+                  "text": "注意防曬",
+                  "size": "xxs",
+                  "align": "center",
+                  "margin": "sm",
+                  "weight": "bold"
+                }
+              ],
+              "flex": 1
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://upload.cc/i1/2022/08/01/y3BfeE.png",
+                  "size": "xxs",
+                  "flex": 1
+                },
+                {
+                  "type": "text",
+                  "text": "注意高溫",
+                  "size": "xxs",
+                  "align": "center",
+                  "margin": "sm",
+                  "weight": "bold"
+                }
+              ],
+              "flex": 1
+            }
+          ],
+          "margin": "xxl"
+        },
+        {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "今晚明晨",
+                  "margin": "md",
+                  "weight": "bold"
+                },
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "image",
+                      "url": "https://upload.cc/i1/2022/08/01/GzcSu5.png",
+                      "flex": 1,
+                      "size": "xxs",
+                      "offsetTop": "md"
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "box",
+                          "layout": "horizontal",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": "18° ~ 24°",
+                              "weight": "bold"
+                            },
+                            {
+                              "type": "box",
+                              "layout": "vertical",
+                              "contents": [
+                                {
+                                  "type": "text",
+                                  "text": "90%",
+                                  "weight": "bold",
+                                  "align": "center"
+                                }
+                              ],
+                              "backgroundColor": "#E0E0E0",
+                              "width": "40px",
+                              "height": "22px",
+                              "cornerRadius": "sm"
+                            }
+                          ],
+                          "flex": 3,
+                          "margin": "md"
+                        },
+                        {
+                          "type": "text",
+                          "text": "薄長袖,棉外套",
+                          "weight": "bold"
+                        }
+                      ],
+                      "flex": 3,
+                      "margin": "md"
+                    }
+                  ],
+                  "margin": "md"
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [],
+              "width": "3px",
+              "backgroundColor": "#B7B7B7",
+              "margin": "md",
+              "offsetTop": "md"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "明日白天",
+                  "margin": "md",
+                  "weight": "bold"
+                },
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "image",
+                      "url": "https://upload.cc/i1/2022/08/01/GzcSu5.png",
+                      "flex": 1,
+                      "size": "xxs",
+                      "offsetTop": "md"
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "box",
+                          "layout": "horizontal",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": "19° ~ 21°",
+                              "weight": "bold"
+                            },
+                            {
+                              "type": "box",
+                              "layout": "vertical",
+                              "contents": [
+                                {
+                                  "type": "text",
+                                  "text": "30%",
+                                  "weight": "bold",
+                                  "align": "center"
+                                }
+                              ],
+                              "backgroundColor": "#E0E0E0",
+                              "width": "40px",
+                              "height": "22px",
+                              "cornerRadius": "sm"
+                            }
+                          ],
+                          "flex": 3,
+                          "margin": "md"
+                        },
+                        {
+                          "type": "text",
+                          "text": "薄長袖,棉外套",
+                          "weight": "bold"
+                        }
+                      ],
+                      "flex": 3,
+                      "margin": "md"
+                    }
+                  ],
+                  "margin": "md"
+                }
+              ],
+              "flex": 1,
+              "margin": "md"
+            }
+          ]
+        },
+        {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [],
+              "width": "90%",
+              "height": "6px",
+              "backgroundColor": "#0D8186",
+              "offsetTop": "6px"
+            },
+            {
+              "type": "box",
+              "layout": "baseline",
+              "contents": [
+                {
+                  "type": "icon",
+                  "url": "https://upload.cc/i1/2022/08/12/MR5xY4.png"
+                }
+              ],
+              "width": "16px",
+              "justifyContent": "center"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [],
+              "height": "6px",
+              "backgroundColor": "#0D8186",
+              "offsetTop": "6px"
+            }
+          ],
+          "margin": "md"
+        },
+        {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "text",
+              "text": "日出 {{sunrise_time}}",
+              "weight": "bold",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "日落 {{sunset_time}}",
+              "align": "end",
+              "weight": "bold"
+            }
+          ],
+          "margin": "xs"
+        },
+        {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [],
+              "width": "60%",
+              "height": "6px",
+              "backgroundColor": "#0D8186",
+              "offsetTop": "6px"
+            },
+            {
+              "type": "box",
+              "layout": "baseline",
+              "contents": [
+                {
+                  "type": "icon",
+                  "url": "https://upload.cc/i1/2022/08/12/Mj0Zv9.png"
+                }
+              ],
+              "width": "16px",
+              "justifyContent": "center"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [],
+              "height": "6px",
+              "backgroundColor": "#0D8186",
+              "offsetTop": "6px"
+            }
+          ],
+          "margin": "none"
+        },
+        {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "text",
+              "text": "月出 {{moonrise_time}}",
+              "weight": "bold",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "月落 {{moonset_time}}",
+              "align": "end",
+              "weight": "bold"
+            }
+          ],
+          "margin": "xs"
+        }
+      ]
+    },
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "button",
+          "action": {
+            "type": "message",
+            "label": "回主選單",
+            "text": "主選單"
+          },
+          "style": "primary",
+          "margin": "md"
+        }
+      ]
+    }
+  }
