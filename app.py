@@ -15,6 +15,7 @@ from linebot.v3.messaging import (
     FlexContainer
 )
 from datetime import datetime, timedelta
+import json
 
 app = Flask(__name__)
 
@@ -64,7 +65,8 @@ def extract_address(text):
         town = result['prediction']['entities'][1]['text']
         messages.append(TextMessage(text=f"你傳送的位址資訊的城市:{city}"))
         messages.append(TextMessage(text=f"你傳送的位址資訊的鄉鎮:{town}"))
-        weather_data = weatherService.get_12hr_forecast("臺北市", "大安區")
+        weather_data = weatherService.get_12hr_forecast(city, town)
+        # weather_data = weatherService.get_12hr_forecast("臺北市", "大安區")
         astronomical_data = weatherService.get_astronomical_time("臺北市")
         line_flex_str = get_weather_flex(request, weather_data, astronomical_data, city, town)
         messages.append(FlexMessage(alt_text="建議穿搭", contents=FlexContainer.from_json(line_flex_str)))
@@ -82,458 +84,68 @@ def get_weather_flex(request, weather_data, astronomical_data, city, town):
     min_temp = [min_t for min_t in weather_data["MinT"]]
     max_temp = [max_t for max_t in weather_data["MaxT"]]
     pop_12h = [pop for pop in weather_data["PoP12h"]]
-    line_flex_str = """{
-        "type": "bubble",
-        "size": "giga",
-        "body": {
-            "type": "box",
-            "layout": "vertical",
-            "spacing": "md",
-            "contents": [
-            {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
-                {
-                    "type": "icon",
-                    "url": "https://cdn-icons-png.flaticon.com/512/3179/3179068.png"
-                },
-                {
-                    "type": "text",
-                    "text": "{{city}} {{town}}",
-                    "weight": "bold",
-                    "offsetStart": "sm"
-                }
-                ]
-            },
-            {
-                "type": "text",
-                "text": "{{time_desc}}",
-                "weight": "bold",
-                "margin": "md"
-            },
-            {
-                "type": "text",
-                "text": "{{minT}}° ~ {{maxT}}°",
-                "size": "3xl",
-                "weight": "bold",
-                "margin": "none"
-            },
-            {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
-                {
-                    "type": "icon",
-                    "url": "https://cdn-icons-png.flaticon.com/512/46/46073.png"
-                },
-                {
-                    "type": "text",
-                    "text": "{{PoP}}%",
-                    "size": "sm",
-                    "offsetStart": "sm",
-                    "flex": 1
-                },
-                {
-                    "type": "text",
-                    "text": "{{Wx_desc}}",
-                    "size": "xs",
-                    "weight": "bold",
-                    "margin": "none",
-                    "flex": 9,
-                    "offsetStart": "md"
-                }
-                ],
-                "margin": "none"
-            },
-            {
-                "type": "image",
-                "url": "{{Wx_url}}",
-                "align": "end",
-                "position": "absolute",
-                "offsetStart": "190px",
-                "offsetTop": "5px"
-            },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                    {
-                        "type": "image",
-                        "url": "{{cloth_icon}}",
-                        "size": "xxs",
-                        "flex": 1
-                    },
-                    {
-                        "type": "text",
-                        "text": "{{cloth_text}}",
-                        "size": "xxs",
-                        "align": "center",
-                        "margin": "sm",
-                        "weight": "bold"
-                    }
-                    ],
-                    "flex": 1
-                },
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                    {
-                        "type": "image",
-                        "url": "{{cloth_icon}}",
-                        "size": "xxs",
-                        "flex": 1
-                    },
-                    {
-                        "type": "text",
-                        "text": "{{cloth_text}}",
-                        "size": "xxs",
-                        "align": "center",
-                        "margin": "sm",
-                        "weight": "bold"
-                    }
-                    ],
-                    "flex": 1
-                },
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [],
-                    "width": "3px",
-                    "backgroundColor": "#B7B7B7"
-                },
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                    {
-                        "type": "image",
-                        "url": "{{suggestion_icon}}",
-                        "size": "xxs",
-                        "flex": 1
-                    },
-                    {
-                        "type": "text",
-                        "text": "{{suggestion_text}}",
-                        "size": "xxs",
-                        "align": "center",
-                        "margin": "sm",
-                        "weight": "bold"
-                    }
-                    ],
-                    "flex": 1
-                },
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                    {
-                        "type": "image",
-                        "url": "{{suggestion_icon}}",
-                        "size": "xxs",
-                        "flex": 1
-                    },
-                    {
-                        "type": "text",
-                        "text": "{{suggestion_text}}",
-                        "size": "xxs",
-                        "align": "center",
-                        "margin": "sm",
-                        "weight": "bold"
-                    }
-                    ],
-                    "flex": 1
-                }
-                ],
-                "margin": "xxl"
-            },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                    {
-                        "type": "text",
-                        "text": "{{time_desc}}",
-                        "margin": "md",
-                        "weight": "bold"
-                    },
-                    {
-                        "type": "box",
-                        "layout": "horizontal",
-                        "contents": [
-                        {
-                            "type": "image",
-                            "url": "{{Wx_url}}",
-                            "flex": 1,
-                            "size": "xxs",
-                            "offsetTop": "md"
-                        },
-                        {
-                            "type": "box",
-                            "layout": "vertical",
-                            "contents": [
-                            {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "contents": [
-                                {
-                                    "type": "text",
-                                    "text": "{{minT}}° ~ {{maxT}}°",
-                                    "weight": "bold"
-                                },
-                                {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "{{PoP}}%",
-                                        "weight": "bold",
-                                        "align": "center"
-                                    }
-                                    ],
-                                    "backgroundColor": "#E0E0E0",
-                                    "width": "40px",
-                                    "height": "22px",
-                                    "cornerRadius": "sm"
-                                }
-                                ],
-                                "flex": 3,
-                                "margin": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "{{cloth}}",
-                                "weight": "bold"
-                            }
-                            ],
-                            "flex": 3,
-                            "margin": "md"
-                        }
-                        ],
-                        "margin": "md"
-                    }
-                    ]
-                },
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [],
-                    "width": "3px",
-                    "backgroundColor": "#B7B7B7",
-                    "margin": "md",
-                    "offsetTop": "md"
-                },
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                    {
-                        "type": "text",
-                        "text": "{{time_desc}}",
-                        "margin": "md",
-                        "weight": "bold"
-                    },
-                    {
-                        "type": "box",
-                        "layout": "horizontal",
-                        "contents": [
-                        {
-                            "type": "image",
-                            "url": "{{Wx_url}}",
-                            "flex": 1,
-                            "size": "xxs",
-                            "offsetTop": "md"
-                        },
-                        {
-                            "type": "box",
-                            "layout": "vertical",
-                            "contents": [
-                            {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "contents": [
-                                {
-                                    "type": "text",
-                                    "text": "{{minT}}° ~ {{maxT}}°",
-                                    "weight": "bold"
-                                },
-                                {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "{{PoP}}%",
-                                        "weight": "bold",
-                                        "align": "center"
-                                    }
-                                    ],
-                                    "backgroundColor": "#E0E0E0",
-                                    "width": "40px",
-                                    "height": "22px",
-                                    "cornerRadius": "sm"
-                                }
-                                ],
-                                "flex": 3,
-                                "margin": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "{{cloth}}",
-                                "weight": "bold"
-                            }
-                            ],
-                            "flex": 3,
-                            "margin": "md"
-                        }
-                        ],
-                        "margin": "md"
-                    }
-                    ],
-                    "flex": 1,
-                    "margin": "md"
-                }
-                ]
-            },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [],
-                    "width": "{{sun_width}}%",
-                    "height": "6px",
-                    "backgroundColor": "#64cbf3",
-                    "offsetTop": "6px"
-                },
-                {
-                    "type": "box",
-                    "layout": "baseline",
-                    "contents": [
-                    {
-                        "type": "icon",
-                        "url": "https://cdn-icons-png.freepik.com/512/169/169367.png"
-                    }
-                    ],
-                    "width": "16px",
-                    "justifyContent": "center"
-                },
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [],
-                    "height": "6px",
-                    "backgroundColor": "#64cbf3",
-                    "offsetTop": "6px"
-                }
-                ],
-                "margin": "md"
-            },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                {
-                    "type": "text",
-                    "text": "日出 {{sunrise_time}}",
-                    "weight": "bold",
-                    "align": "start"
-                },
-                {
-                    "type": "text",
-                    "text": "日落 {{sunset_time}}",
-                    "align": "end",
-                    "weight": "bold"
-                }
-                ],
-                "margin": "xs"
-            },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [],
-                    "width": "{{moon_width}}%",
-                    "height": "6px",
-                    "backgroundColor": "#1b2328",
-                    "offsetTop": "6px"
-                },
-                {
-                    "type": "box",
-                    "layout": "baseline",
-                    "contents": [
-                    {
-                        "type": "icon",
-                        "url": "https://cdn-icons-png.freepik.com/512/12470/12470176.png"
-                    }
-                    ],
-                    "width": "16px",
-                    "justifyContent": "center"
-                },
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [],
-                    "height": "6px",
-                    "backgroundColor": "#1b2328",
-                    "offsetTop": "6px"
-                }
-                ],
-                "margin": "none"
-            },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                {
-                    "type": "text",
-                    "text": "月出 {{moonrise_time}}",
-                    "weight": "bold",
-                    "align": "start"
-                },
-                {
-                    "type": "text",
-                    "text": "月落 {{moonset_time}}",
-                    "align": "end",
-                    "weight": "bold"
-                }
-                ],
-                "margin": "xs"
+
+    # 根據建議的數量，選擇Flex Message的內容
+    if len(cloth_text) == 1:
+        if len(suggestion_text) == 2:
+            with open("./flex/suggestion_12.json", "r", encoding="utf-8") as f:
+                line_flex_json = json.load(f)
+                line_flex_str = json.dumps(line_flex_json)
+            params = {
+                "cloth_text": cloth_text[i],
+                "cloth_icon": cloth_icon[i],
             }
-            ]
-        },
-        "footer": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-            {
-                "type": "button",
-                "action": {
-                "type": "message",
-                "label": "回主選單",
-                "text": "主選單"
-                },
-                "style": "primary",
-                "margin": "md"
+            line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
+            for i in range(2):
+                params = {
+                    "suggestion_text": suggestion_text[i],
+                    "suggestion_icon": suggestion_icon[i],
+                }
+                line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
+        elif len(suggestion_text) == 3:
+            with open("./flex/suggestion_13.json", "r", encoding="utf-8") as f:
+                line_flex_json = json.load(f)
+                line_flex_str = json.dumps(line_flex_json)
+            params = {
+                "cloth_text": cloth_text[i],
+                "cloth_icon": cloth_icon[i],
             }
-            ]
-        }
-    }"""
+            line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
+            for i in range(3):
+                params = {
+                    "suggestion_text": suggestion_text[i],
+                    "suggestion_icon": suggestion_icon[i]
+                }
+                line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
+    elif len(cloth_text) == 2:
+        if len(suggestion_text) == 2:
+            with open("./flex/suggestion_22.json", "r", encoding="utf-8") as f:
+                line_flex_json = json.load(f)
+                line_flex_str = json.dumps(line_flex_json)
+            for i in range(2):
+                params = {
+                    "cloth_text": cloth_text[i],
+                    "cloth_icon": cloth_icon[i],
+                    "suggestion_text": suggestion_text[i],
+                    "suggestion_icon": suggestion_icon[i]
+                }
+                line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
+        elif len(suggestion_text) == 3:
+            with open("./flex/suggestion_23.json", "r", encoding="utf-8") as f:
+                line_flex_json = json.load(f)
+                line_flex_str = json.dumps(line_flex_json)
+            for i in range(2):
+                params = {
+                    "cloth_text": cloth_text[i],
+                    "cloth_icon": cloth_icon[i],
+                }
+                line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
+            for i in range(3):
+                params = {
+                    "suggestion_text": suggestion_text[i],
+                    "suggestion_icon": suggestion_icon[i]
+                }
+                line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
 
     now = datetime.now()
     sunrise_time = astronomical_data["SunRiseTime"]
@@ -583,15 +195,6 @@ def get_weather_flex(request, weather_data, astronomical_data, city, town):
     }
     line_flex_str = LineBotHelper.replace_variable(line_flex_str, params)
 
-    for i in range(2):
-        params = {
-            "cloth_text": cloth_text[i],
-            "cloth_icon": cloth_icon[i],
-            "suggestion_text": suggestion_text[i],
-            "suggestion_icon": suggestion_icon[i]
-        }
-        line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
-
     # 依序替換三個時段的天氣資訊
     for i in range(3):
         params = {
@@ -606,7 +209,7 @@ def get_weather_flex(request, weather_data, astronomical_data, city, town):
             cloth_text, cloth_icon, suggestion_text, suggestion_icon = weatherService.get_suggestions(url_root, weather_data, i)
             params["cloth"] = ', '.join(cloth_text)
 
-        line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
+        line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1).replace('\n', '')
 
     return line_flex_str
 

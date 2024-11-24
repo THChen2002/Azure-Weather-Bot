@@ -1,0 +1,456 @@
+{
+    "type": "bubble",
+    "size": "giga",
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+        {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+            {
+                "type": "icon",
+                "url": "https://cdn-icons-png.flaticon.com/512/3179/3179068.png"
+            },
+            {
+                "type": "text",
+                "text": "{{city}} {{town}}",
+                "weight": "bold",
+                "offsetStart": "sm"
+            }
+            ]
+        },
+        {
+            "type": "text",
+            "text": "{{time_desc}}",
+            "weight": "bold",
+            "margin": "md"
+        },
+        {
+            "type": "text",
+            "text": "{{minT}}° ~ {{maxT}}°",
+            "size": "3xl",
+            "weight": "bold",
+            "margin": "none"
+        },
+        {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+            {
+                "type": "icon",
+                "url": "https://cdn-icons-png.flaticon.com/512/46/46073.png"
+            },
+            {
+                "type": "text",
+                "text": "{{PoP}}%",
+                "size": "sm",
+                "offsetStart": "sm",
+                "flex": 1
+            },
+            {
+                "type": "text",
+                "text": "{{Wx_desc}}",
+                "size": "xs",
+                "weight": "bold",
+                "margin": "none",
+                "flex": 9,
+                "offsetStart": "md"
+            }
+            ],
+            "margin": "none"
+        },
+        {
+            "type": "image",
+            "url": "{{Wx_url}}",
+            "align": "end",
+            "position": "absolute",
+            "offsetStart": "190px",
+            "offsetTop": "5px"
+        },
+        {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "image",
+                    "url": "{{cloth_icon}}",
+                    "size": "xxs",
+                    "flex": 1
+                },
+                {
+                    "type": "text",
+                    "text": "{{cloth_text}}",
+                    "size": "xxs",
+                    "align": "center",
+                    "margin": "sm",
+                    "weight": "bold"
+                }
+                ],
+                "flex": 1
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "image",
+                    "url": "{{cloth_icon}}",
+                    "size": "xxs",
+                    "flex": 1
+                },
+                {
+                    "type": "text",
+                    "text": "{{cloth_text}}",
+                    "size": "xxs",
+                    "align": "center",
+                    "margin": "sm",
+                    "weight": "bold"
+                }
+                ],
+                "flex": 1
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [],
+                "width": "3px",
+                "backgroundColor": "#B7B7B7"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "image",
+                    "url": "{{suggestion_icon}}",
+                    "size": "xxs",
+                    "flex": 1
+                },
+                {
+                    "type": "text",
+                    "text": "{{suggestion_text}}",
+                    "size": "xxs",
+                    "align": "center",
+                    "margin": "sm",
+                    "weight": "bold"
+                }
+                ],
+                "flex": 1
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "image",
+                    "url": "{{suggestion_icon}}",
+                    "size": "xxs",
+                    "flex": 1
+                },
+                {
+                    "type": "text",
+                    "text": "{{suggestion_text}}",
+                    "size": "xxs",
+                    "align": "center",
+                    "margin": "sm",
+                    "weight": "bold"
+                }
+                ],
+                "flex": 1
+            }
+            ],
+            "margin": "xxl"
+        },
+        {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "{{time_desc}}",
+                    "margin": "md",
+                    "weight": "bold"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                    {
+                        "type": "image",
+                        "url": "{{Wx_url}}",
+                        "flex": 1,
+                        "size": "xxs",
+                        "offsetTop": "md"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "contents": [
+                            {
+                                "type": "text",
+                                "text": "{{minT}}° ~ {{maxT}}°",
+                                "weight": "bold",
+                                "adjustMode": "shrink-to-fit"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "{{PoP}}%",
+                                    "weight": "bold",
+                                    "align": "center",
+                                    "adjustMode": "shrink-to-fit"
+                                }
+                                ],
+                                "backgroundColor": "#E0E0E0",
+                                "width": "40px",
+                                "height": "22px",
+                                "cornerRadius": "sm"
+                            }
+                            ],
+                            "flex": 3,
+                            "margin": "md"
+                        },
+                        {
+                            "type": "text",
+                            "text": "{{cloth}}",
+                            "weight": "bold"
+                        }
+                        ],
+                        "flex": 3,
+                        "margin": "md"
+                    }
+                    ],
+                    "margin": "md"
+                }
+                ]
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [],
+                "width": "3px",
+                "backgroundColor": "#B7B7B7",
+                "margin": "md",
+                "offsetTop": "md"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "{{time_desc}}",
+                    "margin": "md",
+                    "weight": "bold"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                    {
+                        "type": "image",
+                        "url": "{{Wx_url}}",
+                        "flex": 1,
+                        "size": "xxs",
+                        "offsetTop": "md"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "contents": [
+                            {
+                                "type": "text",
+                                "text": "{{minT}}° ~ {{maxT}}°",
+                                "weight": "bold",
+                                "adjustMode": "shrink-to-fit"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "{{PoP}}%",
+                                    "weight": "bold",
+                                    "align": "center",
+                                    "adjustMode": "shrink-to-fit"
+                                }
+                                ],
+                                "backgroundColor": "#E0E0E0",
+                                "width": "40px",
+                                "height": "22px",
+                                "cornerRadius": "sm"
+                            }
+                            ],
+                            "flex": 3,
+                            "margin": "md"
+                        },
+                        {
+                            "type": "text",
+                            "text": "{{cloth}}",
+                            "weight": "bold"
+                        }
+                        ],
+                        "flex": 3,
+                        "margin": "md"
+                    }
+                    ],
+                    "margin": "md"
+                }
+                ],
+                "flex": 1,
+                "margin": "md"
+            }
+            ]
+        },
+        {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [],
+                "width": "{{sun_width}}%",
+                "height": "6px",
+                "backgroundColor": "#64cbf3",
+                "offsetTop": "6px"
+            },
+            {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                {
+                    "type": "icon",
+                    "url": "https://cdn-icons-png.freepik.com/512/169/169367.png"
+                }
+                ],
+                "width": "16px",
+                "justifyContent": "center"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [],
+                "height": "6px",
+                "backgroundColor": "#64cbf3",
+                "offsetTop": "6px"
+            }
+            ],
+            "margin": "md"
+        },
+        {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "text",
+                "text": "日出 {{sunrise_time}}",
+                "weight": "bold",
+                "align": "start"
+            },
+            {
+                "type": "text",
+                "text": "日落 {{sunset_time}}",
+                "align": "end",
+                "weight": "bold"
+            }
+            ],
+            "margin": "xs"
+        },
+        {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [],
+                "width": "{{moon_width}}%",
+                "height": "6px",
+                "backgroundColor": "#1b2328",
+                "offsetTop": "6px"
+            },
+            {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                {
+                    "type": "icon",
+                    "url": "https://cdn-icons-png.freepik.com/512/12470/12470176.png"
+                }
+                ],
+                "width": "16px",
+                "justifyContent": "center"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [],
+                "height": "6px",
+                "backgroundColor": "#1b2328",
+                "offsetTop": "6px"
+            }
+            ],
+            "margin": "none"
+        },
+        {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+            {
+                "type": "text",
+                "text": "月出 {{moonrise_time}}",
+                "weight": "bold",
+                "align": "start"
+            },
+            {
+                "type": "text",
+                "text": "月落 {{moonset_time}}",
+                "align": "end",
+                "weight": "bold"
+            }
+            ],
+            "margin": "xs"
+        }
+        ]
+    },
+    "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+        {
+            "type": "button",
+            "action": {
+            "type": "message",
+            "label": "回主選單",
+            "text": "主選單"
+            },
+            "style": "primary",
+            "margin": "md"
+        }
+        ]
+    }
+}

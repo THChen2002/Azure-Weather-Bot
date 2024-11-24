@@ -94,25 +94,25 @@ class WeatherService:
             
     def get_suggestions(self, url_root, weather_data, index):
         cloth_map = {
-           "短袖": f"{url_root}static/suggestion_icons/short_sleeves.png",
-           "薄長袖": f"{url_root}static/suggestion_icons/thin_long_sleeves.png",
-           "厚長袖": f"{url_root}static/suggestion_icons/thick_long_sleeves.png",
-           "薄外套": f"{url_root}static/suggestion_icons/thin_jacket.png",
-           "棉外套": f"{url_root}static/suggestion_icons/cotton_jacket.png",
-           "羽絨外套": f"{url_root}static/suggestion_icons/down_jacket.png"
+            "短袖": f"{url_root}static/suggestion_icons/short_sleeves.png",
+            "薄長袖": f"{url_root}static/suggestion_icons/thin_long_sleeves.png",
+            "厚長袖": f"{url_root}static/suggestion_icons/thick_long_sleeves.png",
+            "薄外套": f"{url_root}static/suggestion_icons/thin_jacket.png",
+            "棉外套": f"{url_root}static/suggestion_icons/cotton_jacket.png",
+            "羽絨外套": f"{url_root}static/suggestion_icons/down_jacket.png"
         }
         suggestion_map = {
-           "注意高溫": f"{url_root}static/suggestion_icons/heat.png",
-           "注意低溫": f"{url_root}static/suggestion_icons/cold.png",
-           "攜帶雨具": f"{url_root}static/suggestion_icons/rain.png",
-           "注意防曬": f"{url_root}static/suggestion_icons/uvi.png",
-           "注意強風": f"{url_root}static/suggestion_icons/wind.png",
-           "適合運動": f"{url_root}static/suggestion_icons/exercise_s.png",
-           "減少運動": f"{url_root}static/suggestion_icons/exercise_r.png",
-           "避免運動": f"{url_root}static/suggestion_icons/exercise_a.png",
-           "適合曬衣": f"{url_root}static/suggestion_icons/hang_s.png",
-           "減少曬衣": f"{url_root}static/suggestion_icons/hang_r.png",
-           "避免曬衣": f"{url_root}static/suggestion_icons/hang_a.png"
+            "注意高溫": f"{url_root}static/suggestion_icons/heat.png",
+            "注意低溫": f"{url_root}static/suggestion_icons/cold.png",
+            "攜帶雨具": f"{url_root}static/suggestion_icons/rain.png",
+            "注意防曬": f"{url_root}static/suggestion_icons/uvi.png",
+            "注意強風": f"{url_root}static/suggestion_icons/wind.png",
+            "適合運動": f"{url_root}static/suggestion_icons/exercise_s.png",
+            "減少運動": f"{url_root}static/suggestion_icons/exercise_r.png",
+            "避免運動": f"{url_root}static/suggestion_icons/exercise_a.png",
+            "適合曬衣": f"{url_root}static/suggestion_icons/hang_s.png",
+            "減少曬衣": f"{url_root}static/suggestion_icons/hang_r.png",
+            "避免曬衣": f"{url_root}static/suggestion_icons/hang_a.png"
         }
         minAT = int(weather_data["MinAT"][index])
         maxAT = int(weather_data["MaxAT"][index])
@@ -121,43 +121,49 @@ class WeatherService:
         UVI = int(weather_data["UVI"][index])
         RH = int(weather_data["RH"][index])
         clothes = []
-
         suggestions = []
 
-        if minAT >= 23:
+        # 衣物建議條件
+        if maxAT >= 23:
             clothes.append("短袖")
-        elif minAT >= 20:
+        elif maxAT >= 18:
             clothes.append("薄長袖")
         else:
             clothes.append("厚長袖")
 
-        if minAT < 12:
-            suggestions.append("注意低溫")
-
-        
-        if maxAT >= 36:
-            suggestions.extend(["注意高溫", "減少運動"])
-        elif maxAT >= 23:
-            clothes.append("薄外套")
-        elif maxAT >= 17:
+        if minAT <= 14:
+            clothes.append("羽絨外套")
+        elif minAT <= 17:
             clothes.append("棉外套")
-        else:
-            suggestions.append("羽絨外套")
-        
+        elif minAT <= 23:
+            clothes.append("薄外套")
+
+        # 天氣建議條件
+        if maxAT >= 36:
+            suggestions.append("注意高溫")
+        if minAT <= 12:
+            suggestions.append("注意低溫")
         if PoP >= 30:
             suggestions.append("攜帶雨具")
-        
         if UVI >= 8:
             suggestions.append("注意防曬")
-
-        if WS >= 7:
+        if WS >= 6:
             suggestions.append("注意強風")
         
-        if RH <= 70:
-            suggestions.append("適合曬衣")
-        elif RH <= 80:
+        # 運動建議條件
+        if PoP >= 50 or maxAT >= 38 or minAT <= 10:
+            suggestions.append("避免運動")
+        elif PoP >= 30 or maxAT >= 36 or minAT <= 12 or UVI >= 10:
+            suggestions.append("減少運動")
+        else:
+            suggestions.append("適合運動")
+        
+        # 曬衣建議條件
+        if RH >= 90:
+            suggestions.append("避免曬衣")
+        elif RH >= 80:
             suggestions.append("減少曬衣")
         else:
-            suggestions.append("避免曬衣")
+            suggestions.append("適合曬衣")
 
         return clothes, [cloth_map[cloth] for cloth in clothes], suggestions, [suggestion_map[suggestion] for suggestion in suggestions]
