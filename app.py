@@ -61,12 +61,11 @@ def extract_address(text):
 
     messages = []
     if len(entities) == 2 and entities[0]['category'] == 'city' and entities[1]['category'] == 'town':
-        city = result['prediction']['entities'][0]['text']
-        town = result['prediction']['entities'][1]['text']
+        city = entities[0]['extraInformation'][0]['key'] if entities[0].get('extraInformation') else entities[0]['text']
+        town = entities[1]['text']
         messages.append(TextMessage(text=f"你傳送的位址資訊的城市:{city}"))
         messages.append(TextMessage(text=f"你傳送的位址資訊的鄉鎮:{town}"))
         weather_data = weatherService.get_12hr_forecast(city, town)
-        # weather_data = weatherService.get_12hr_forecast("臺北市", "大安區")
         astronomical_data = weatherService.get_astronomical_time("臺北市")
         line_flex_str = get_weather_flex(request, weather_data, astronomical_data, city, town)
         messages.append(FlexMessage(alt_text="建議穿搭", contents=FlexContainer.from_json(line_flex_str)))
@@ -79,73 +78,34 @@ def get_weather_flex(request, weather_data, astronomical_data, city, town):
     url_root = request.url_root.replace("http://", "https://")
     time_desc = weatherService.get_time_desc(weather_data["start_time"][0])
     cloth_text, cloth_icon, suggestion_text, suggestion_icon = weatherService.get_suggestions(url_root, weather_data, 0)
+    if len(suggestion_text) > 3:
+        suggestion_text = suggestion_text[:3]
+        suggestion_icon = suggestion_icon[:3]
     wx_code = [wx for wx in weather_data["Wx_code"]]
     wx_desc = [desc for desc in weather_data["Wx_desc"]]
     min_temp = [min_t for min_t in weather_data["MinT"]]
     max_temp = [max_t for max_t in weather_data["MaxT"]]
     pop_12h = [pop for pop in weather_data["PoP12h"]]
 
+    cloth_amount = len(cloth_text)
+    suggestion_amount = len(suggestion_text)
+
     # 根據建議的數量，選擇Flex Message的內容
-    if len(cloth_text) == 1:
-        if len(suggestion_text) == 2:
-            with open("./flex/suggestion_12.json", "r", encoding="utf-8") as f:
-                line_flex_json = json.load(f)
-                line_flex_str = json.dumps(line_flex_json)
+    with open(f"./flex/suggestion_{cloth_amount}{suggestion_amount}.json", "r", encoding="utf-8") as f:
+        line_flex_json = json.load(f)
+        line_flex_str = json.dumps(line_flex_json)
+        for i in range(cloth_amount):
             params = {
                 "cloth_text": cloth_text[i],
                 "cloth_icon": cloth_icon[i],
             }
             line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
-            for i in range(2):
-                params = {
-                    "suggestion_text": suggestion_text[i],
-                    "suggestion_icon": suggestion_icon[i],
-                }
-                line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
-        elif len(suggestion_text) == 3:
-            with open("./flex/suggestion_13.json", "r", encoding="utf-8") as f:
-                line_flex_json = json.load(f)
-                line_flex_str = json.dumps(line_flex_json)
+        for i in range(suggestion_amount):
             params = {
-                "cloth_text": cloth_text[i],
-                "cloth_icon": cloth_icon[i],
+                "suggestion_text": suggestion_text[i],
+                "suggestion_icon": suggestion_icon[i]
             }
             line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
-            for i in range(3):
-                params = {
-                    "suggestion_text": suggestion_text[i],
-                    "suggestion_icon": suggestion_icon[i]
-                }
-                line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
-    elif len(cloth_text) == 2:
-        if len(suggestion_text) == 2:
-            with open("./flex/suggestion_22.json", "r", encoding="utf-8") as f:
-                line_flex_json = json.load(f)
-                line_flex_str = json.dumps(line_flex_json)
-            for i in range(2):
-                params = {
-                    "cloth_text": cloth_text[i],
-                    "cloth_icon": cloth_icon[i],
-                    "suggestion_text": suggestion_text[i],
-                    "suggestion_icon": suggestion_icon[i]
-                }
-                line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
-        elif len(suggestion_text) == 3:
-            with open("./flex/suggestion_23.json", "r", encoding="utf-8") as f:
-                line_flex_json = json.load(f)
-                line_flex_str = json.dumps(line_flex_json)
-            for i in range(2):
-                params = {
-                    "cloth_text": cloth_text[i],
-                    "cloth_icon": cloth_icon[i],
-                }
-                line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
-            for i in range(3):
-                params = {
-                    "suggestion_text": suggestion_text[i],
-                    "suggestion_icon": suggestion_icon[i]
-                }
-                line_flex_str = LineBotHelper.replace_variable(line_flex_str, params, 1)
 
     now = datetime.now()
     sunrise_time = astronomical_data["SunRiseTime"]
@@ -214,4 +174,4 @@ def get_weather_flex(request, weather_data, astronomical_data, city, town):
     return line_flex_str
 
 if __name__ == "__main__":
-        app.run()
+    app.run()

@@ -131,7 +131,7 @@ class WeatherService:
         else:
             clothes.append("厚長袖")
 
-        if minAT <= 14:
+        if minAT <= 12:
             clothes.append("羽絨外套")
         elif minAT <= 17:
             clothes.append("棉外套")
@@ -147,7 +147,7 @@ class WeatherService:
             suggestions.append("攜帶雨具")
         if UVI >= 8:
             suggestions.append("注意防曬")
-        if WS >= 6:
+        if WS >= 7:
             suggestions.append("注意強風")
         
         # 運動建議條件
