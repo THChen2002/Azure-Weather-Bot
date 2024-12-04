@@ -2,471 +2,480 @@
     "type": "bubble",
     "size": "giga",
     "body": {
-        "type": "box",
-        "layout": "vertical",
-        "spacing": "md",
-        "contents": [
+      "type": "box",
+      "layout": "vertical",
+      "spacing": "md",
+      "contents": [
         {
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
+          "type": "box",
+          "layout": "baseline",
+          "contents": [
             {
-                "type": "icon",
-                "url": "https://cdn-icons-png.flaticon.com/512/3179/3179068.png"
+              "type": "icon",
+              "url": "https://cdn-icons-png.flaticon.com/512/3179/3179068.png"
             },
             {
-                "type": "text",
-                "text": "{{city}} {{town}}",
-                "weight": "bold",
-                "offsetStart": "sm"
+              "type": "text",
+              "text": "{{city}} {{town}}",
+              "weight": "bold",
+              "offsetStart": "sm",
+              "adjustMode": "shrink-to-fit"
             }
-            ]
+          ]
         },
         {
-            "type": "text",
-            "text": "{{time_desc}}",
-            "weight": "bold",
-            "margin": "md"
+          "type": "text",
+          "text": "{{time_desc}}",
+          "weight": "bold",
+          "margin": "md",
+          "adjustMode": "shrink-to-fit"
         },
         {
-            "type": "text",
-            "text": "{{minT}}° ~ {{maxT}}°",
-            "size": "3xl",
-            "weight": "bold",
-            "margin": "none"
+          "type": "text",
+          "text": "{{minT}}° ~ {{maxT}}°",
+          "size": "3xl",
+          "weight": "bold",
+          "margin": "none"
         },
         {
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
+          "type": "box",
+          "layout": "baseline",
+          "contents": [
             {
-                "type": "icon",
-                "url": "https://cdn-icons-png.flaticon.com/512/46/46073.png"
+              "type": "icon",
+              "url": "https://cdn-icons-png.flaticon.com/512/46/46073.png"
             },
             {
-                "type": "text",
-                "text": "{{PoP}}%",
-                "size": "sm",
-                "offsetStart": "sm",
-                "flex": 1
+              "type": "text",
+              "text": "{{PoP}}%",
+              "size": "sm",
+              "offsetStart": "sm",
+              "flex": 1,
+              "adjustMode": "shrink-to-fit"
             },
             {
-                "type": "text",
-                "text": "{{Wx_desc}}",
-                "size": "xs",
-                "weight": "bold",
-                "margin": "none",
-                "flex": 9,
-                "offsetStart": "md"
+              "type": "text",
+              "text": "{{Wx_desc}}",
+              "size": "xs",
+              "weight": "bold",
+              "margin": "none",
+              "flex": 9,
+              "offsetStart": "md",
+              "adjustMode": "shrink-to-fit"
             }
-            ],
-            "margin": "none"
+          ],
+          "margin": "none"
         },
         {
-            "type": "image",
-            "url": "{{Wx_url}}",
-            "align": "end",
-            "position": "absolute",
-            "offsetStart": "190px",
-            "offsetTop": "5px"
+          "type": "image",
+          "url": "{{Wx_url}}",
+          "position": "absolute",
+          "align": "end",
+          "offsetTop": "12px",
+          "offsetStart": "250px"
         },
         {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
             {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
                 {
-                    "type": "image",
-                    "url": "{{cloth_icon}}",
-                    "size": "xxs",
-                    "flex": 1
+                  "type": "image",
+                  "url": "{{cloth_icon}}",
+                  "flex": 1,
+                  "size": "xxs"
                 },
                 {
-                    "type": "text",
-                    "text": "{{cloth_text}}",
-                    "size": "xxs",
-                    "align": "center",
-                    "margin": "sm",
-                    "weight": "bold"
+                  "type": "text",
+                  "text": "{{cloth_text}}",
+                  "margin": "sm",
+                  "size": "xxs",
+                  "weight": "bold",
+                  "align": "center",
+                  "adjustMode": "shrink-to-fit"
                 }
-                ]
+              ],
+              "flex": 2
             },
             {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
                 {
-                    "type": "image",
-                    "url": "{{cloth_icon}}",
-                    "size": "xxs",
-                    "flex": 1
+                  "type": "image",
+                  "url": "{{cloth_icon}}",
+                  "flex": 1,
+                  "size": "xxs"
                 },
                 {
-                    "type": "text",
-                    "text": "{{cloth_text}}",
-                    "size": "xxs",
-                    "align": "center",
-                    "margin": "sm",
-                    "weight": "bold"
+                  "type": "text",
+                  "text": "{{cloth_text}}",
+                  "margin": "sm",
+                  "size": "xxs",
+                  "weight": "bold",
+                  "align": "center",
+                  "adjustMode": "shrink-to-fit"
                 }
-                ]
+              ],
+              "flex": 2
             },
             {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [],
-                "width": "3px",
-                "backgroundColor": "#B7B7B7"
+              "type": "box",
+              "layout": "vertical",
+              "contents": [],
+              "width": "3px",
+              "backgroundColor": "#B7B7B7"
             },
             {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
                 {
-                    "type": "image",
-                    "url": "{{suggestion_icon}}",
-                    "size": "xxs",
-                    "flex": 1
+                  "type": "image",
+                  "url": "{{suggestion_icon}}",
+                  "flex": 1,
+                  "size": "xxs"
                 },
                 {
-                    "type": "text",
-                    "text": "{{suggestion_text}}",
-                    "size": "xxs",
-                    "align": "center",
-                    "margin": "sm",
-                    "weight": "bold"
+                  "type": "text",
+                  "text": "{{suggestion_text}}",
+                  "margin": "sm",
+                  "size": "xxs",
+                  "weight": "bold",
+                  "align": "center",
+                  "adjustMode": "shrink-to-fit"
                 }
-                ]
+              ]
             },
             {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
                 {
-                    "type": "image",
-                    "url": "{{suggestion_icon}}",
-                    "size": "xxs",
-                    "flex": 1
+                  "type": "image",
+                  "url": "{{suggestion_icon}}",
+                  "flex": 1,
+                  "size": "xxs"
                 },
                 {
-                    "type": "text",
-                    "text": "{{suggestion_text}}",
-                    "size": "xxs",
-                    "align": "center",
-                    "margin": "sm",
-                    "weight": "bold"
+                  "type": "text",
+                  "text": "{{suggestion_text}}",
+                  "margin": "sm",
+                  "size": "xxs",
+                  "weight": "bold",
+                  "align": "center",
+                  "adjustMode": "shrink-to-fit"
                 }
-                ]
+              ]
             },
             {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
                 {
-                    "type": "image",
-                    "url": "{{suggestion_icon}}",
-                    "size": "xxs",
-                    "flex": 1
+                  "type": "image",
+                  "url": "{{suggestion_icon}}",
+                  "flex": 1,
+                  "size": "xxs"
                 },
                 {
-                    "type": "text",
-                    "text": "{{suggestion_text}}",
-                    "size": "xxs",
-                    "align": "center",
-                    "margin": "sm",
-                    "weight": "bold"
+                  "type": "text",
+                  "text": "{{suggestion_text}}",
+                  "margin": "sm",
+                  "size": "xxs",
+                  "weight": "bold",
+                  "align": "center",
+                  "adjustMode": "shrink-to-fit"
                 }
-                ]
+              ]
             }
-            ],
-            "margin": "xxl"
+          ],
+          "margin": "xxl"
         },
         {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
             {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
                 {
-                    "type": "text",
-                    "text": "{{time_desc}}",
-                    "margin": "md",
-                    "weight": "bold"
+                  "type": "text",
+                  "text": "{{time_desc}}",
+                  "margin": "md",
+                  "weight": "bold",
+                  "adjustMode": "shrink-to-fit"
                 },
                 {
-                    "type": "box",
-                    "layout": "horizontal",
-                    "contents": [
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
                     {
-                        "type": "image",
-                        "url": "{{Wx_url}}",
-                        "flex": 1,
-                        "size": "xxs",
-                        "offsetTop": "md"
+                      "type": "image",
+                      "url": "{{Wx_url}}",
+                      "size": "xxs",
+                      "offsetTop": "md",
+                      "flex": 1
                     },
                     {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
                         {
-                            "type": "box",
-                            "layout": "horizontal",
-                            "contents": [
+                          "type": "box",
+                          "layout": "horizontal",
+                          "contents": [
                             {
-                                "type": "text",
-                                "text": "{{minT}}° ~ {{maxT}}°",
-                                "weight": "bold",
-                                "adjustMode": "shrink-to-fit"
+                              "type": "text",
+                              "text": "{{minT}}° ~ {{maxT}}°",
+                              "weight": "bold",
+                              "adjustMode": "shrink-to-fit"
                             },
                             {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [
+                              "type": "box",
+                              "layout": "vertical",
+                              "contents": [
                                 {
-                                    "type": "text",
-                                    "text": "{{PoP}}%",
-                                    "weight": "bold",
-                                    "align": "center",
-                                    "adjustMode": "shrink-to-fit"
+                                  "type": "text",
+                                  "text": "{{PoP}}%",
+                                  "weight": "bold",
+                                  "align": "center",
+                                  "adjustMode": "shrink-to-fit"
                                 }
-                                ],
-                                "backgroundColor": "#E0E0E0",
-                                "width": "40px",
-                                "height": "22px",
-                                "cornerRadius": "sm"
+                              ],
+                              "width": "40px",
+                              "height": "22px",
+                              "backgroundColor": "#E0E0E0",
+                              "cornerRadius": "sm"
                             }
-                            ],
-                            "flex": 3,
-                            "margin": "md"
+                          ],
+                          "flex": 3,
+                          "margin": "md"
                         },
                         {
-                            "type": "text",
-                            "text": "{{cloth}}",
-                            "weight": "bold"
+                          "type": "text",
+                          "text": "{{cloth}}",
+                          "weight": "bold",
+                          "adjustMode": "shrink-to-fit"
                         }
-                        ],
-                        "flex": 3,
-                        "margin": "md"
+                      ],
+                      "flex": 3,
+                      "margin": "md"
                     }
-                    ],
-                    "margin": "md"
+                  ],
+                  "margin": "md"
                 }
-                ]
+              ]
             },
             {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [],
-                "width": "3px",
-                "backgroundColor": "#B7B7B7",
-                "margin": "md",
-                "offsetTop": "md"
+              "type": "box",
+              "layout": "vertical",
+              "contents": [],
+              "margin": "md",
+              "width": "3px",
+              "backgroundColor": "#B7B7B7",
+              "offsetTop": "lg"
             },
             {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
                 {
-                    "type": "text",
-                    "text": "{{time_desc}}",
-                    "margin": "md",
-                    "weight": "bold"
+                  "type": "text",
+                  "text": "{{time_desc}}",
+                  "margin": "md",
+                  "weight": "bold",
+                  "adjustMode": "shrink-to-fit"
                 },
                 {
-                    "type": "box",
-                    "layout": "horizontal",
-                    "contents": [
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
                     {
-                        "type": "image",
-                        "url": "{{Wx_url}}",
-                        "flex": 1,
-                        "size": "xxs",
-                        "offsetTop": "md"
+                      "type": "image",
+                      "url": "{{Wx_url}}",
+                      "size": "xxs",
+                      "offsetTop": "md",
+                      "flex": 1
                     },
                     {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
                         {
-                            "type": "box",
-                            "layout": "horizontal",
-                            "contents": [
+                          "type": "box",
+                          "layout": "horizontal",
+                          "contents": [
                             {
-                                "type": "text",
-                                "text": "{{minT}}° ~ {{maxT}}°",
-                                "weight": "bold",
-                                "adjustMode": "shrink-to-fit"
+                              "type": "text",
+                              "text": "{{minT}}° ~ {{maxT}}°",
+                              "weight": "bold",
+                              "adjustMode": "shrink-to-fit"
                             },
                             {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [
+                              "type": "box",
+                              "layout": "vertical",
+                              "contents": [
                                 {
-                                    "type": "text",
-                                    "text": "{{PoP}}%",
-                                    "weight": "bold",
-                                    "align": "center",
-                                    "adjustMode": "shrink-to-fit"
+                                  "type": "text",
+                                  "text": "{{PoP}}%",
+                                  "weight": "bold",
+                                  "align": "center",
+                                  "adjustMode": "shrink-to-fit"
                                 }
-                                ],
-                                "backgroundColor": "#E0E0E0",
-                                "width": "40px",
-                                "height": "22px",
-                                "cornerRadius": "sm"
+                              ],
+                              "width": "40px",
+                              "height": "22px",
+                              "backgroundColor": "#E0E0E0",
+                              "cornerRadius": "sm"
                             }
-                            ],
-                            "flex": 3,
-                            "margin": "md"
+                          ],
+                          "flex": 3,
+                          "margin": "md"
                         },
                         {
-                            "type": "text",
-                            "text": "{{cloth}}",
-                            "weight": "bold"
+                          "type": "text",
+                          "text": "{{cloth}}",
+                          "weight": "bold",
+                          "adjustMode": "shrink-to-fit"
                         }
-                        ],
-                        "flex": 3,
-                        "margin": "md"
+                      ],
+                      "flex": 3,
+                      "margin": "md"
                     }
-                    ],
-                    "margin": "md"
+                  ],
+                  "margin": "md"
                 }
-                ],
-                "flex": 1,
-                "margin": "md"
+              ],
+              "flex": 1,
+              "margin": "md"
             }
-            ]
+          ]
         },
         {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
             {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [],
-                "width": "{{sun_width}}%",
-                "height": "6px",
-                "backgroundColor": "#0D8186",
-                "offsetTop": "6px"
+              "type": "text",
+              "text": "{{sunrise_time}}",
+              "weight": "bold",
+              "flex": 1,
+              "align": "center",
+              "adjustMode": "shrink-to-fit"
             },
             {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
                 {
-                    "type": "icon",
-                    "url": "https://cdn-icons-png.freepik.com/512/169/169367.png"
-                }
-                ],
-                "width": "16px",
-                "justifyContent": "center"
-            },
-            {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [],
-                "height": "6px",
-                "backgroundColor": "#0D8186",
-                "offsetTop": "6px"
-            }
-            ],
-            "margin": "md"
-        },
-        {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-            {
-                "type": "text",
-                "text": "日出 {{sunrise_time}}",
-                "weight": "bold",
-                "align": "start"
-            },
-            {
-                "type": "text",
-                "text": "日落 {{sunset_time}}",
-                "align": "end",
-                "weight": "bold"
-            }
-            ],
-            "margin": "xs"
-        },
-        {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-            {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [],
-                "width": "{{moon_width}}%",
-                "height": "6px",
-                "backgroundColor": "#0D8186",
-                "offsetTop": "6px"
-            },
-            {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [],
+                  "width": "{{sun_width}}%",
+                  "height": "6px",
+                  "backgroundColor": "#FF8000"
+                },
                 {
-                    "type": "icon",
-                    "url": "https://cdn-icons-png.freepik.com/512/12470/12470176.png"
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
+                    {
+                      "type": "icon",
+                      "url": "https://cdn-icons-png.freepik.com/512/169/169367.png"
+                    }
+                  ],
+                  "width": "16px",
+                  "offsetTop": "2px"
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [],
+                  "height": "6px",
+                  "backgroundColor": "#FF8000"
                 }
-                ],
-                "width": "16px",
-                "justifyContent": "center"
+              ],
+              "margin": "md",
+              "alignItems": "center",
+              "flex": 6
             },
             {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [],
-                "height": "6px",
-                "backgroundColor": "#0D8186",
-                "offsetTop": "6px"
+              "type": "text",
+              "text": "{{sunset_time}}",
+              "weight": "bold",
+              "flex": 1,
+              "align": "center",
+              "adjustMode": "shrink-to-fit",
+              "margin": "md"
             }
-            ],
-            "margin": "none"
+          ],
+          "margin": "md"
         },
         {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
             {
-                "type": "text",
-                "text": "月出 {{moonrise_time}}",
-                "weight": "bold",
-                "align": "start"
+              "type": "text",
+              "text": "{{moonrise_time}}",
+              "weight": "bold",
+              "flex": 1,
+              "align": "center",
+              "adjustMode": "shrink-to-fit"
             },
             {
-                "type": "text",
-                "text": "月落 {{moonset_time}}",
-                "align": "end",
-                "weight": "bold"
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [],
+                  "width": "{{moon_width}}%",
+                  "height": "6px",
+                  "backgroundColor": "#004B97"
+                },
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
+                    {
+                      "type": "icon",
+                      "url": "https://cdn-icons-png.freepik.com/512/12470/12470176.png"
+                    }
+                  ],
+                  "width": "16px",
+                  "offsetTop": "2px"
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [],
+                  "height": "6px",
+                  "backgroundColor": "#004B97"
+                }
+              ],
+              "margin": "md",
+              "alignItems": "center",
+              "flex": 6
+            },
+            {
+              "type": "text",
+              "text": "{{moonset_time}}",
+              "weight": "bold",
+              "flex": 1,
+              "align": "center",
+              "adjustMode": "shrink-to-fit",
+              "margin": "md"
             }
-            ],
-            "margin": "xs"
+          ],
+          "margin": "md"
         }
-        ]
-    },
-    "footer": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-        {
-            "type": "button",
-            "action": {
-            "type": "message",
-            "label": "回主選單",
-            "text": "主選單"
-            },
-            "style": "primary",
-            "margin": "md"
-        }
-        ]
+      ]
     }
 }
