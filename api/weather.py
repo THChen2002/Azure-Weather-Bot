@@ -15,24 +15,36 @@ class WeatherService:
     # 取得12小時天氣預報
     def get_12hr_forecast(self, city, town):
         city_id = __class__.api_map[city]
-        weather_elements = ["Wx", "PoP12h", "MinT", "MaxT", "MinAT", "MaxAT", "RH", "UVI", "WS"]
+        weather_elements = {
+            "天氣現象": "Wx",
+            "12小時降雨機率": {"name": "PoP12h", "element": "ProbabilityOfPrecipitation"},
+            "最低溫度": {"name": "MinT", "element": "MinTemperature"},
+            "最高溫度": {"name": "MaxT", "element": "MaxTemperature"},
+            "最低體感溫度": {"name": "MinAT", "element": "MinApparentTemperature"},
+            "最高體感溫度": {"name": "MaxAT", "element": "MaxApparentTemperature"},
+            "平均相對濕度": {"name": "RH", "element": "RelativeHumidity"},
+            "紫外線指數": {"name":"UVI", "element": "UVIndex"},
+            "風速": {"name": "WS", "element": "BeaufortScale"}
+        }
         result = {}
-        for i, element in enumerate(weather_elements):
-            api_url = f"https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-093?locationId={city_id}&locationName={town}&elementName={element}&format=JSON"
+        for i, element in enumerate(weather_elements.keys()):
+            api_url = f"https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-093?locationId={city_id}&LocationName={town}&ElementName={element}&format=JSON"
             response = self.get_weather(api_url)
             if response:
                 data = response.json()
-                weather_data = data["records"]["locations"][0]["location"][0]["weatherElement"][0]["time"]
+                weather_data = data["records"]["Locations"][0]["Location"][0]["WeatherElement"][0]["Time"]
                 # 第一次取得資料時，取得start_time和end_time
                 if i == 0:
-                    result["start_time"] = [self.convert_time_format(weather["startTime"]) for weather in weather_data]
-                    result["end_time"] = [self.convert_time_format(weather["startTime"]) for weather in weather_data]
-                # 如果為天氣現象取得代號
-                if element == "Wx":
-                    result["Wx_desc"] = [weather["elementValue"][0]["value"] for weather in weather_data]
-                    result["Wx_code"] = [weather["elementValue"][1]["value"] for weather in weather_data]
+                    result["start_time"] = [self.convert_time_format(weather["StartTime"]) for weather in weather_data]
+                    result["end_time"] = [self.convert_time_format(weather["StartTime"]) for weather in weather_data]
+                if element == "天氣現象":
+                    result["Wx_desc"] = [weather["ElementValue"][0]["Weather"] for weather in weather_data]
+                    result["Wx_code"] = [weather["ElementValue"][0]["WeatherCode"] for weather in weather_data]
                 else:
-                    result[element] = [weather["elementValue"][0]["value"] for weather in weather_data]
+                    result[weather_elements[element]["name"]] = [
+                        weather["ElementValue"][0][weather_elements[element]["element"]]
+                        for weather in weather_data
+                    ]
             else:
                 print(f"Failed to get weather data for {city}{town}. Status code: {response.status_code}")
         return result
@@ -62,7 +74,7 @@ class WeatherService:
     
     # 轉換時間格式 MM/DD HH:MM
     def convert_time_format(self, time_str):
-        datetime_obj = datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S")
+        datetime_obj = datetime.strptime(time_str, "%Y-%m-%dT%H:%M:%S+08:00")
         return datetime_obj
     
     # 轉換星期
