@@ -25,6 +25,10 @@ line_handler = config.handler
 azureService = config.azureService
 weatherService = config.weatherService
 
+@app.route("/")
+def home():
+    return "Azure Weather Bot"
+
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
