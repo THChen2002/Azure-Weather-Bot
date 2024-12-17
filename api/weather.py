@@ -129,7 +129,7 @@ class WeatherService:
         minAT = int(weather_data["MinAT"][index])
         maxAT = int(weather_data["MaxAT"][index])
         PoP = int(weather_data["PoP12h"][index])
-        WS = int(weather_data["WS"][index])
+        WS = int(weather_data["WS"][index].split(" ")[1]) if " " in weather_data["WS"][index] else int(weather_data["WS"][index])
         UVI = int(weather_data["UVI"][index])
         RH = int(weather_data["RH"][index])
         clothes = []
@@ -159,7 +159,7 @@ class WeatherService:
             suggestions.append("攜帶雨具")
         if UVI >= 8:
             suggestions.append("注意防曬")
-        if WS >= 7:
+        if WS >= 6:
             suggestions.append("注意強風")
         
         # 運動建議條件
