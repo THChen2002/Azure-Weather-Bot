@@ -15,6 +15,7 @@ from linebot.v3.messaging import (
     FlexContainer
 )
 from datetime import datetime, timedelta
+import pytz
 import json
 
 app = Flask(__name__)
@@ -124,7 +125,7 @@ def get_weather_flex(request, weather_data, astronomical_data, city, town):
         return timedelta(hours=hours, minutes=minutes)
 
     # 取得當前時間並轉換為 timedelta
-    now = datetime.now()
+    now = datetime.now(pytz.timezone("Asia/Taipei"))
     current_time = timedelta(hours=now.hour, minutes=now.minute, seconds=now.second)
 
     # 將天文資料轉換為 timedelta
