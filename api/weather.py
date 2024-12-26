@@ -94,7 +94,8 @@ class WeatherService:
             return "六"
         elif week == 7:
             return "日"
-        
+    
+    # 取得時間描述
     def get_time_desc(self, datetime):
         match datetime.hour:
             case 6 | 9 | 12 | 15: 
@@ -103,7 +104,8 @@ class WeatherService:
                 return ["今晚明晨", "明日白天", "明日晚上"]
             case _:
                 return ["-", "-", "-"]
-            
+    
+    # 取得穿搭建議
     def get_suggestions(self, url_root, weather_data, index):
         cloth_map = {
             "短袖": f"{url_root}static/suggestion_icons/short_sleeves.png",
